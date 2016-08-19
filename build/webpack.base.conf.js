@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+    publicPath: config.build.assetsPublicPath,
     filename: '[name].js'
   },
   resolve: {
@@ -36,7 +36,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'eslint',
         include: projectRoot,
-        exclude: /node_modules/
+        exclude: [/node_modules/, /src\/directives/]
       }
     ],
     loaders: [

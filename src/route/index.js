@@ -7,6 +7,10 @@ export function configRouter (router) {
       component: Home,
       title: '首页'
     },
+    '/home': {
+      component: Home,
+      title: '首页'
+    },
     '*': {
       component: NotFound,
       title: '404'

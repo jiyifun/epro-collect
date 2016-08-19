@@ -7,7 +7,6 @@
 //   todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
 // }
 
-
 // const mutations = {
 //   [types.ADD_TODO] (state, text) {
 //     state.todos.push({
