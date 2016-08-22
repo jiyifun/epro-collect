@@ -1,6 +1,6 @@
 <template>
   <div class="about-wrapper">
-    <h2 class="list-title">将就</h2>
+    <h2 class="list-title selector">将</h2>
     <p>北邮研二 前端工程师 健身爱好者 段子手</p>
     <a href="https://github.com/jiangjiu">Github</a>
     <a href="http://weibo.com/u/2900330731">微博</a>
@@ -22,6 +22,14 @@
 </script>
 
 <style>
+.selector {
+    width: 75px;
+    height: 32px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+}
+
+
   .about-wrapper {
     width: 80%;
     padding: 1rem;;

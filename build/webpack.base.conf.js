@@ -2,7 +2,7 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
-
+var px2rem = require('postcss-px2rem')
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -73,6 +73,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      { 
+        test: /\.css$/, 
+        loader: 'px2rem?remUnit=75&remPrecision=8' 
       }
     ]
   },
@@ -80,6 +84,9 @@ module.exports = {
     formatter: require('eslint-friendly-formatter')
   },
   vue: {
+    // note: do not nest the `postcss` option under `loaders`
+    // 添加px2rem插件转换单位
+    postcss: [px2rem()],
     loaders: utils.cssLoaders()
   }
 }

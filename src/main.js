@@ -10,6 +10,8 @@ import Home from './views/Home'
 import About from './views/About'
 import Tags from './views/Tags'
 import Article from './views/Article'
+// 引入样式
+import './styles/css/global.scss'
 // 注册两个插件
 Vue.use(VueResource)
 Vue.use(VueRouter)

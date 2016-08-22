@@ -1,6 +1,6 @@
 <template>
   <div class="about-wrapper">
-    <h2 class="list-title">ab</h2>
+    <h2 class="list-title selector">aaaaab</h2>
     <p>北邮研二 前端工程师 健身爱s好者 段手</p>
     </div>
 </template>
@@ -20,6 +20,12 @@
 </script>
 
 <style>
+.selector {
+    width: 150px;
+    height: 64px; /*px*/
+    font-size: 28px; /*px*/
+    border: 1px solid #ddd; /*no*/
+}
   .about-wrapper {
     width: 80%;
     padding: 1rem;;
