@@ -1,5 +1,5 @@
 import * as types from './mutation-types'
-import { API_ROOT } from '../config'
+import { API_ROOT } from '../constants'
 
 export const getContentList = function ({ dispatch }) {
   dispatch(types.REQUEST_CONTENT_LIST)

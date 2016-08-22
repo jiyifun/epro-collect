@@ -1,50 +1,81 @@
-<!-- 主页 -->
 <template>
-  <div id="app">
-    <img class="logo" src="../assets/logo.png">
-    <tab-bar></tab-bar>
-    <hello></hello>  
+  <div class="list-wrapper">
+    <ul class="list-container" id="list-ul">
+      <li v-for="item in items">
+        <a v-link="{ name: 'article', params: {id: item.objectId}}">
+          <p class="list-title">{{item.title}}</p>
+          <p class="list-updated">{{item.createdAt}}</p>
+          <p class="list-abstract">{{item.abstract}}</p>
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
-<script>
-import Hello from '../components/Hello'
-import TabBar from '../components/TabBar'
-export default {
-  components: {
-    Hello,
-    TabBar
+<script type="text/babel">
+  import {contentList} from '../vuex/getters'
+  import {getContentList, updateHeadline} from '../vuex/actions'
+
+  export default {
+    vuex: {
+      getters: {
+        items: contentList
+      },
+      actions: {
+        getList: getContentList,
+        updateHeadline: updateHeadline
+      }
+    },
+    created () {
+      this.getList()
+      this.updateHeadline('将就的博客')
+    }
   }
-}
 </script>
 
 <style>
-html {
-  height: 100%;
-}
+  .list-container li {
+    border-bottom: 1px solid #eee;
+  }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+  .list-title {
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: #404040;
+    margin-top: 0;
+  }
 
-#app {
-  color: #2c3e50;
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
+  .list-abstract {
+    font-size: 1.6rem;
+    color: #919191;
+    font-weight: 300;
+  }
 
-#app a {
-  color: #42b983;
-  text-decoration: none;
-}
+  .list-updated {
+    font-family: "Comic Sans MS", curslve, sans-serif;
+    font-size: 1.8rem;
+    color: #8b8b8b;
+    padding: 5px 0;
+  }
 
-.logo {
-  width: 100px;
-  height: 100px
-}
+  .list-container li a {
+    padding: 1rem 1.5rem;
+    display: block;
+    transition: all .3s;
+    margin:0;
+  }
+
+  .list-container li a:hover {
+    background-color: Rgba(0, 0, 0, .02);
+  }
+
+  @media screen and (max-width: 768px) {
+    .list-title {
+      font-size: 2.2rem;
+    }
+
+    .list-updated {
+      font-size: 1.6rem;
+    }
+  }
 </style>
