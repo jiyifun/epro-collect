@@ -25,6 +25,7 @@
     height: 64px; /*px*/
     font-size: 28px; /*px*/
     border: 1px solid #ddd; /*no*/
+    display: flex;
 }
   .about-wrapper {
     width: 80%;

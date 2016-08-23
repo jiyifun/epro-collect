@@ -7,9 +7,9 @@ import FastClick from 'fastclick'
 
 // 引入页面
 import Home from './views/Home'
-import About from './views/About'
-import Tags from './views/Tags'
-import Article from './views/Article'
+import List from './views/List'
+import Mine from './views/Mine'
+import Setting from './views/Setting'
 // 引入样式
 import './styles/css/global.scss'
 // 注册两个插件
@@ -28,15 +28,14 @@ router.map({
   '/home': {
     component: Home
   },
-  '/about': {
-    component: About
+  '/list': {
+    component: List
   },
-  '/tags': {
-    component: Tags
+  '/mine': {
+    component: Mine
   },
-  '/article/:id': {
-    name: 'article',
-    component: Article
+  '/setting': {
+    component: Setting
   }
 
 })

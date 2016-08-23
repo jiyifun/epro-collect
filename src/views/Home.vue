@@ -28,7 +28,10 @@
     },
     created () {
       this.getList()
-      this.updateHeadline('将就的博客')
+      this.updateHeadline('主页')
+    },
+    ready () {
+      // this.updateHeadline('主页')
     }
   }
 </script>

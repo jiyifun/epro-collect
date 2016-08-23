@@ -1,6 +1,5 @@
 <template>
   <div id="wrapper">
-    <!-- <vheader class="header"></vheader> -->
     <div class="main">
       <router-view class="main-wrapper" transition="fade" transition-mode="out-in"></router-view>
     </div>
@@ -10,20 +9,19 @@
 </template>
 
 <script type="text/babel">
-  import Vheader from './components/Vheader'
   import Vfooter from './components/Vfooter'
-  import Store from './vuex/store'
+  import store from './vuex/store'
 
   export default {
     components: {
-      Vheader,
       Vfooter
     },
-    store: Store
+    store
   }
 </script>
 
 <style>
+@import '/style/css/variable';
   body {
     -webkit-font-smoothing:antialiased;
     margin: 0;
@@ -33,6 +31,26 @@
     line-height: 1.7;
     height:100%;
   }
-
- 
+  #wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+ .main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+ }
+ .footer {
+  position: absolute;
+  height: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 2px solid $bordercolor;
+ }
 </style>

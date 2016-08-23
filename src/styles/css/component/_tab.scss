@@ -12,7 +12,7 @@
     width: 100%;
 }
 .ui-tab-nav {
-    font-size: $font-size-info;
+    font-size: $font-size-info;/*px*/
 
     display:         box;
     display: -webkit-box;
@@ -48,7 +48,12 @@
 
             box-flex: 1;
     -webkit-box-flex: 1;
+    & a {
+        display: inline-block;
+        width: 100%;
+    }
 }
+
 .ui-tab-nav li.current {
     color: $txt-link;
     border-bottom: 2px $txt-link solid;
