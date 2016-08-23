@@ -1,10 +1,10 @@
 <template>
 	<div class="ui-tab">
 		<ul class="ui-tab-nav ">
-			<li :class="{current: isActive('主页')}"><a v-link="'/home'">home</a></li>
-			<li :class="{current: isActive('列表页')}"><a v-link="'/list'">list</a></li>
-			<li :class="{current: isActive('个人中心页')}"><a v-link="'/mine'">mine</a></li>
-			<li :class="{current: isActive('管理设置页')}"><a v-link="'/setting'">setting</a></li>
+			<li :class="{active: isActive('主页')}"><a v-link="'/home'"><i class="ui-icon ui-icon-add"></i>home</a></li>
+			<li :class="{active: isActive('列表页')}"><a v-link="'/list'">list</a></li>
+			<li :class="{active: isActive('个人中心页')}"><a v-link="'/mine'">mine</a></li>
+			<li :class="{active: isActive('管理设置页')}"><a v-link="'/setting'">setting</a></li>
 		</ul>
 	</div>
 </template>
@@ -34,6 +34,10 @@ export default {
 
     // '../styles/css/mixin',
     // '../styles/css/variable',
-    '../styles/css/component/tab'
+    '../styles/css/component/tab';
+
+    .ui-tab-nav li.active a {
+      color: #2200e2;
+    }
 
 </style>

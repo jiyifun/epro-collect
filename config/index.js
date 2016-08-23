@@ -19,6 +19,15 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 8080,
-    proxyTable: {}
+    proxyTable: {
+      '/e-api': {
+        target:'http://test.e-pro.com.cn/', 
+        changeOrigin: true,
+        ws: true,
+        pathRewrite:{
+          '^/e-api': ''
+        }
+      }
+    }
   }
 }
