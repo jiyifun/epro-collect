@@ -3,9 +3,10 @@
   <div id="main">
     <p class="not">个人中心</p>
     <form @submit.prevent="submit">
-      头像
-        <input type="file" name="file_data" id="file_data">
-        <input type="submit" value="送出">
+      <div class="weui_uploader_input_wrp">
+        <input class="weui_uploader_input" name="file_data" id="file_data" type="file" accept="image/*" multiple />
+      </div>
+      <input class="weui_btn weui_btn_primary" type="submit" value="送出">
     </form>
 </div>
 </template>
@@ -13,7 +14,7 @@
 /*global FormData:true*/
 /*eslint no-undef: "error"*/
 import {contentList} from '../vuex/getters'
-import {getContentList, updateHeadline} from '../vuex/actions'
+import {getContentList, updateHeadline, uploadPic} from '../vuex/actions'
 
 export default {
   vuex: {
@@ -22,7 +23,8 @@ export default {
     },
     actions: {
       getList: getContentList,
-      updateHeadline: updateHeadline
+      updateHeadline: updateHeadline,
+      uploadPic
     }
   },
   created () {

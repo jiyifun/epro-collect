@@ -7,7 +7,7 @@ Vue.use(VueResource)
 // HTTP相关
 Vue.http.options.emulateJSON = true
 Vue.http.options.crossOrigin = true
-
+// 请求拦截器
 Vue.http.interceptors.push({
   request (request) {
     // 这里对请求体进行处理

@@ -1,22 +1,50 @@
 // import { setDocTitle } from '../util'
-import Home from '../views/Home.vue'
-import NotFound from '../views/NotFound.vue'
+// 业务模块
+import Home from '../views/Home'
+import List from '../views/List'
+import Mine from '../views/Mine'
+import Setting from '../views/Setting'
+import NotFound from '../views/NotFound'
+// 注册模块
+import RegisterByWx from '../views/register/WeiXin'
+import RegisterByPhone from '../views/register/Phone'
+
 export function configRouter (router) {
   router.map({
     '/': {
       component: Home,
       title: '首页'
     },
+    '/register': {
+      subRoutes: {
+        '/': {
+          component: RegisterByWx
+        },
+        '/weixin': {
+          component: RegisterByWx
+        },
+        '/phone': {
+          component: RegisterByPhone
+        }
+      }
+    },
     '/home': {
-      component: Home,
-      title: '首页'
+      component: Home
+    },
+    '/list': {
+      component: List
+    },
+    '/mine': {
+      component: Mine
+    },
+    '/setting': {
+      component: Setting
     },
     '*': {
       component: NotFound,
       title: '404'
     }
   })
-
   // global before
   // 3 options:
   // 1. return a boolean
