@@ -5,14 +5,28 @@ $border-b: -webkit-gradient(linear, left top, left bottom, color-stop(.5, rgba(0
 $border-l: -webkit-gradient(linear, right top, left top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor), to($bordercolor));
 $border-r: -webkit-gradient(linear, left top, right top, color-stop(.5, rgba(0, 0, 0, 0)), color-stop(.5, $bordercolor), to($bordercolor));
 $skin-a: #09f;          //蓝色皮肤，主色
-$skin-b: #ff8709;          //橙色皮肤，副色
+$skin-b: #ff8709;//橙色皮肤，副色
+
+
+
+$theme-blue: #00c6ff;
+// 字体
+$txt-default: #646464;
+$txt-bold: #3a3a3a;
+// 灰色
+$gray-default: #f6f6f6;
+$gray-deep: #e1e1e1;
+// 绿色
+$green: #66DC3C;
+
+
+
 
 $stable-bg: #f8f8f8;
 $default-bg: #fff;
 $positive-bg: #18b4ed;
 $header-height: 98px;
 $mask-bg: rgba(0,0,0,.4);
-$txt-default: rgb(51,51,51);
 $txt-info: #808080;
 $txt-muted: #a6a6a6;
 $txt-warning: #fc4226;

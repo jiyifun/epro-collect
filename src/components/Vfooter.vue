@@ -1,12 +1,35 @@
 <template>
-	<div class="ui-tab">
-		<ul class="ui-tab-nav ">
-			<li :class="{active: isActive('主页')}"><a v-link="'/home'"><i class="ui-icon ui-icon-add"></i>home</a></li>
-			<li :class="{active: isActive('列表页')}"><a v-link="'/list'">list</a></li>
-			<li :class="{active: isActive('个人中心页')}"><a v-link="'/mine'">mine</a></li>
-			<li :class="{active: isActive('管理设置页')}"><a v-link="'/setting'">setting</a></li>
-		</ul>
-	</div>
+	<div class="weui_tab">
+    <div class="weui_tab_bd">
+
+    </div>
+    <div class="weui_tabbar">
+        <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
+            <div class="weui_tabbar_icon">
+                <img src="path/to/images/icon_nav_button.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">微信</p>
+        </a>
+        <a href="javascript:;" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="path/to/images/icon_nav_msg.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">通讯录</p>
+        </a>
+        <a href="javascript:;" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="path/to/images/icon_nav_article.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">发现</p>
+        </a>
+        <a href="javascript:;" class="weui_tabbar_item">
+            <div class="weui_tabbar_icon">
+                <img src="path/to/images/icon_nav_cell.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">我</p>
+        </a>
+    </div>
+</div>
 </template>
 <script>
 import {headline} from '../vuex/getters'
@@ -35,6 +58,7 @@ export default {
     // '../styles/css/mixin',
     // '../styles/css/variable',
     '../styles/css/component/tab';
+    
 
     .ui-tab-nav li.active a {
       color: #2200e2;

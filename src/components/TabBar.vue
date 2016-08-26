@@ -1,44 +1,38 @@
 <template>
-  <div class="tabbar">
-    <ul class="tabbar-list">
-      <li class="tabbar-item">
-        <span class="tabbar-item--title">首页</span>
-        <i class="tabbar-item--icon icon-tabbar-home"></i>
-      </li>
-      <li class="tabbar-item">
-        <span class="tabbar-item--title">1页</span>
-        <i class="tabbar-item--icon icon-tabbar-home"></i>
-      </li>
-      <li class="tabbar-item">
-        <span class="tabbar-item--title">三页</span>
-        <i class="tabbar-item--icon icon-tabbar-home"></i>
-      </li>
-      <li class="tabbar-item">
-        <span class="tabbar-item--title">四页</span>
-        <i class="tabbar-item--icon icon-tabbar-home"></i>
-      </li>
-    </ul>
-  </div>
+  <div>
+  <tabbar>
+    <tabbar-item>
+      <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_button.png">
+      <span slot="label">Wechat</span>
+    </tabbar-item>
+    <tabbar-item show-dot>
+      <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_msg.png">
+      <span slot="label">Message</span>
+    </tabbar-item>
+    <tabbar-item selected>
+      <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_article.png">
+      <span slot="label">Explore</span>
+    </tabbar-item>
+    <tabbar-item>
+      <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_cell.png">
+      <span slot="label">News</span>
+    </tabbar-item>
+  </tabbar>
+</div>
 </template>
 
 <script>
+import Tabbar from 'vux/dist/components/tabbar'
+import TabbarItem from 'vux/dist/components/tabbar-item'
 export default {
-  data () {
-    return {
-      // note: changing this line won't causes changes
-      // with hot-reload because the reloaded component
-      // preserves its current state and we are modifying
-      // its initial state.
-      msg: 'Hello World!'
-    }
+  components: {
+    Tabbar,
+    TabbarItem
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style scoped>
 
-h1 {
-  color: #42b983;
-}
 </style>

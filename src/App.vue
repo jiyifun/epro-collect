@@ -1,21 +1,15 @@
 <template>
   <div id="wrapper">
-    <div class="main">
       <router-view class="main-wrapper" transition="fade" transition-mode="out-in"></router-view>
-    </div>
-    <vfooter class="footer"></vfooter>
+    <!-- <tabbar></tabbar> -->
   </div>
 
 </template>
 
 <script type="text/babel">
-  import Vfooter from './components/Vfooter'
   import store from './vuex/store'
 
   export default {
-    components: {
-      Vfooter
-    },
     store
   }
 </script>
@@ -38,19 +32,4 @@
     right: 0;
     bottom: 0;
   }
- .main {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 100px;
- }
- .footer {
-  position: absolute;
-  height: 100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-top: 2px solid $bordercolor;
- }
 </style>
