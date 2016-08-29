@@ -11,9 +11,9 @@ export const getContentList = function ({ dispatch }) {
 }
 
 // 上传图片 todo
-export const uploadPic = ({dispatch}) => {
+export const updateActiveTab = ({dispatch}, value) => {
   // this.$http.post('/e-api/cgi/wx/file_upload', formData)
-  // dispatch(types.UPLOAD_PIC)
+  dispatch(types.UPDATE_ACTIVE_TAB, value)
 }
 
 //  获取标题, 更新标题

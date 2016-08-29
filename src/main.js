@@ -8,7 +8,7 @@ import FastClick from 'fastclick'
 import { configRouter } from './route'
 // 引入样式
 import './styles/css/global.scss'
-import 'weui'
+// import 'weui'
 // 注册两个插件
 Vue.use(VueResource)
 Vue.use(VueRouter)

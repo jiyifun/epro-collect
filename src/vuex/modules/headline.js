@@ -1,7 +1,8 @@
-import {UPDATE_HEADLINE, GET_HEADLINE} from '../mutation-types'
+import {UPDATE_HEADLINE, GET_HEADLINE, UPDATE_ACTIVE_TAB} from '../mutation-types'
 import {setDocTitle} from '../../util/lang'
 const state = {
-  headline: ''
+  headline: '',
+  activeTab: 'health'
 }
 
 const mutations = {
@@ -25,6 +26,9 @@ const mutations = {
   },
   [GET_HEADLINE] (state) {
     return state.headline
+  },
+  [UPDATE_ACTIVE_TAB] (state, value) {
+    state.activeTab = value
   }
 }
 

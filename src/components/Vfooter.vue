@@ -1,67 +1,67 @@
 <template>
-	<div class="weui_tab">
-    <div class="weui_tab_bd">
-
-    </div>
-    <div class="weui_tabbar">
-        <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
-            <div class="weui_tabbar_icon">
-                <img src="path/to/images/icon_nav_button.png" alt="">
-            </div>
-            <p class="weui_tabbar_label">微信</p>
+    <div class=" tabbar">
+        <a v-link="'/health'" @click="clickTab('health')" class="tabbar-item" :class="{'active': isActive('health')}">
+            <p class=" tabbar-label">口腔健康</p>
         </a>
-        <a href="javascript:;" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="path/to/images/icon_nav_msg.png" alt="">
-            </div>
-            <p class="weui_tabbar_label">通讯录</p>
-        </a>
-        <a href="javascript:;" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="path/to/images/icon_nav_article.png" alt="">
-            </div>
-            <p class="weui_tabbar_label">发现</p>
-        </a>
-        <a href="javascript:;" class="weui_tabbar_item">
-            <div class="weui_tabbar_icon">
-                <img src="path/to/images/icon_nav_cell.png" alt="">
-            </div>
-            <p class="weui_tabbar_label">我</p>
+        <a v-link="'/mine'" @click="clickTab('mine')" class="tabbar-item" :class="{'active': isActive('mine')}">
+            <p class=" tabbar-label">我的信息</p>
         </a>
     </div>
-</div>
 </template>
 <script>
-import {headline} from '../vuex/getters'
-import {getContentList, updateHeadline} from '../vuex/actions'
+import {activeTab} from '../vuex/getters'
+import {updateActiveTab, updateHeadline} from '../vuex/actions'
 export default {
 
   vuex: {
     getters: {
-      headline
+      activeTab
     },
     actions: {
-      getList: getContentList,
-      updateHeadline: updateHeadline
+      updateHeadline,
+      updateActiveTab
     }
   },
   methods: {
+    clickTab (value) {
+      this.updateActiveTab(value)
+    },
     isActive (value) {
-      return this.headline === value
+      return this.activeTab === value
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-@import
+@Import '../styles/css/variable';
+@import '../styles/css/util/border';
+.tabbar {
+    position: absolute;
+    display: flex;
+    height: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @extend .ui-border-t;
+    text-align: center;
 
-    // '../styles/css/mixin',
-    // '../styles/css/variable',
-    '../styles/css/component/tab';
-    
+    .tabbar-item {
+        display: inline-block;
+        width: 50%;
+        background-color: $tab-bg;
+        border-right: 1px solid $bordercolor;
 
-    .ui-tab-nav li.active a {
-      color: #2200e2;
+        .tabbar-label {
+            color: $txt-default;
+            font-size: 36px;/*px*/
+            line-height: 100px;
+        }
+        &.active .tabbar-label {
+            color: $theme-blue;
+        }
     }
-
+    .tabbar-item:last-child {
+        border: none;
+    }
+}
 </style>

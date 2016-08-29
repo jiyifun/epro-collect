@@ -1,6 +1,6 @@
 // import { setDocTitle } from '../util'
 // 业务模块
-import Home from '../views/Home'
+import Health from '../views/Health'
 import List from '../views/List'
 import Mine from '../views/Mine'
 import Setting from '../views/Setting'
@@ -12,7 +12,7 @@ import RegisterByPhone from '../views/register/Phone'
 export function configRouter (router) {
   router.map({
     '/': {
-      component: Home,
+      component: Health,
       title: '首页'
     },
     '/register': {
@@ -28,8 +28,8 @@ export function configRouter (router) {
         }
       }
     },
-    '/home': {
-      component: Home
+    '/health': {
+      component: Health
     },
     '/list': {
       component: List

@@ -80,7 +80,7 @@
           <span class="last-check-time">暂无数据</span>
         </div>
         <div class="health-line">
-          <div style="width: {{percent2}}%" class="health-line__percent"></div>
+          <div :style="{width: percent2 + '%'}" class="health-line__percent"></div>
         </div>
         <div class="other-content">
           <div class="other-item">
@@ -110,10 +110,11 @@
   import {contentList} from '../vuex/getters'
   import {getContentList, updateHeadline} from '../vuex/actions'
   import Circle from 'vux/src/components/circle'
-
+  import Tabbar from '../components/Vfooter'
   export default {
     components: {
-      Circle
+      Circle,
+      Tabbar
     },
     vuex: {
       getters: {
@@ -142,6 +143,7 @@
 
 <style lang="scss" scope>
 @import '../styles/css/variable';
+@import '../styles/css/util/border';
 
 .health-wrap {
   position: absolute;
@@ -396,6 +398,7 @@
     text-align: center;
 
     .other-item {
+      @extend .ui-border-r;
       display: inline-block;
       width: 23%;
       height: 60px;

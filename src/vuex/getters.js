@@ -1,7 +1,7 @@
 export const contentList = ({ contentList }) => contentList.contentList
 
 export const headline = ({ headline }) => headline.headline
-
+export const activeTab = ({headline}) => headline.activeTab
 export const article = ({ article }) => article
 
 export const tags = ({ tags }) => tags.tagSet

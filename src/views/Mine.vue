@@ -8,6 +8,7 @@
       </div>
       <input class="weui_btn weui_btn_primary" type="submit" value="送出">
     </form>
+    <tabbar></tabbar>
 </div>
 </template>
 <script>
@@ -15,8 +16,11 @@
 /*eslint no-undef: "error"*/
 import {contentList} from '../vuex/getters'
 import {getContentList, updateHeadline, uploadPic} from '../vuex/actions'
-
+import Tabbar from '../components/Vfooter'
 export default {
+  components: {
+    Tabbar
+  },
   vuex: {
     getters: {
       items: contentList
