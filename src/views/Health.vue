@@ -68,7 +68,7 @@
           <div class="examination-item__label">动度</div>
           <div class="examination-item__value">正常</div>
         </div>
-        <div class="examination-item">
+        <div class="examination-item warning">
           <div class="examination-item__label">龋齿</div>
           <div class="examination-item__value">有</div>
         </div>
@@ -166,13 +166,16 @@
   }
   .examination-item {
     position: absolute;
-    width: 50px;
+    width: 54px;
     height: 200px;
-    border-radius: 25px;
-    background-color: $theme-blue;
+    background-size: cover;
+    background-image: url('../assets/default-bg.png');
     text-align: center;
     line-height: 1.2;
-
+    
+    &.warning {
+      background-image: url('../assets/warning-bg.png');
+    }
     .examination-item__label {
       padding: 20px 10px 0 10px;
       color: #fff;
