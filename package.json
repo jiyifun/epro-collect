@@ -1,7 +1,7 @@
 {
-  "name": "epro-client",
+  "name": "epro-collect",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A collect tooth data APP for vanke property",
   "author": "jiyifun <jiyifun@gmail.com>",
   "private": true,
   "scripts": {

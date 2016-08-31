@@ -153,6 +153,7 @@
   bottom: 100px;
   padding: 40px 70px 0 70px;
   background-color: #fff;
+  overflow: scroll;
 }
 /*数据胶囊*/
  .examination {
@@ -169,12 +170,16 @@
     width: 54px;
     height: 200px;
     background-size: cover;
-    background-image: url('../assets/default-bg.png');
+    background-color: $theme-blue;
     text-align: center;
     line-height: 1.2;
-    
+    border-radius: 27px;
     &.warning {
-      background-image: url('../assets/warning-bg.png');
+      background: -webkit-linear-gradient(90deg, rgba(255,0,0,1) 0, rgba(244,171,79,1) 100%), -webkit-repeating-linear-gradient(0deg, rgba(145,186,63,1) 0, rgba(145,186,63,1) 2%, rgba(145,186,63,1) 8%, rgba(145,186,63,1) 16%, rgba(145,186,63,1) 21%, rgba(145,186,63,1) 27%, rgba(145,186,63,1) 29%, rgba(145,186,63,1) 33%, rgba(145,186,63,1) 39%, rgba(145,186,63,1) 53%, rgba(145,186,63,1) 60%, rgba(145,186,63,1) 79%, rgba(145,186,63,1) 85%, rgba(124,188,10,1) 100%);
+        background: -moz-linear-gradient(0deg, rgba(255,0,0,1) 0, rgba(244,171,79,1) 100%), -moz-repeating-linear-gradient(90deg, rgba(145,186,63,1) 0, rgba(145,186,63,1) 2%, rgba(145,186,63,1) 8%, rgba(145,186,63,1) 16%, rgba(145,186,63,1) 21%, rgba(145,186,63,1) 27%, rgba(145,186,63,1) 29%, rgba(145,186,63,1) 33%, rgba(145,186,63,1) 39%, rgba(145,186,63,1) 53%, rgba(145,186,63,1) 60%, rgba(145,186,63,1) 79%, rgba(145,186,63,1) 85%, rgba(124,188,10,1) 100%);
+        background: linear-gradient(0deg, rgba(255,0,0,1) 0, rgba(244,171,79,1) 100%), repeating-linear-gradient(90deg, rgba(145,186,63,1) 0, rgba(145,186,63,1) 2%, rgba(145,186,63,1) 8%, rgba(145,186,63,1) 16%, rgba(145,186,63,1) 21%, rgba(145,186,63,1) 27%, rgba(145,186,63,1) 29%, rgba(145,186,63,1) 33%, rgba(145,186,63,1) 39%, rgba(145,186,63,1) 53%, rgba(145,186,63,1) 60%, rgba(145,186,63,1) 79%, rgba(145,186,63,1) 85%, rgba(124,188,10,1) 100%);
+        background-position: 50% 50%;
+      // background-image: url('../assets/warning-bg.png');
     }
     .examination-item__label {
       padding: 20px 10px 0 10px;
@@ -369,6 +374,7 @@
 /*其他项目*/
 .other {
   margin-top: 230px;
+  margin-bottom: 30px;
   width: 100%;
   height: 230px;
 

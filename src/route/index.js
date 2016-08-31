@@ -1,44 +1,25 @@
 // import { setDocTitle } from '../util'
 // 业务模块
-import Health from '../views/Health'
-import List from '../views/List'
-import Mine from '../views/Mine'
-import Setting from '../views/Setting'
+import Home from '../views/Home'
+import Histroy from '../views/Histroy'
+import UserInfo from '../views/UserInfo'
 import NotFound from '../views/NotFound'
 // 注册模块
-import RegisterByWx from '../views/register/WeiXin'
-import RegisterByPhone from '../views/register/Phone'
 
 export function configRouter (router) {
   router.map({
     '/': {
-      component: Health,
+      component: Home,
       title: '首页'
     },
-    '/register': {
-      subRoutes: {
-        '/': {
-          component: RegisterByWx
-        },
-        '/weixin': {
-          component: RegisterByWx
-        },
-        '/phone': {
-          component: RegisterByPhone
-        }
-      }
+    '/home': {
+      component: Home
     },
-    '/health': {
-      component: Health
+    '/histroy': {
+      component: Histroy
     },
-    '/list': {
-      component: List
-    },
-    '/mine': {
-      component: Mine
-    },
-    '/setting': {
-      component: Setting
+    '/user_info': {
+      component: UserInfo
     },
     '*': {
       component: NotFound,

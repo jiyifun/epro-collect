@@ -1,0 +1,10 @@
+@mixin a-position($l: 0, $t: 0) {
+	position: absolute;
+	top: #{$l}px;
+	left: #{$t}px;
+}
+
+@mixin reverse_z-index($n: 10, $max: 10) {
+	z-index: $max - $n;
+}
+

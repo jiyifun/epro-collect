@@ -2,7 +2,7 @@ import {UPDATE_HEADLINE, GET_HEADLINE, UPDATE_ACTIVE_TAB} from '../mutation-type
 import {setDocTitle} from '../../util/lang'
 const state = {
   headline: '',
-  activeTab: 'health'
+  activeTab: 'home'
 }
 
 const mutations = {

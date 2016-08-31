@@ -1,10 +1,10 @@
 <template>
     <div class=" tabbar">
-        <a v-link="'/health'" @click="clickTab('health')" class="tabbar-item" :class="{'active': isActive('health')}">
-            <p class=" tabbar-label">口腔健康</p>
+        <a v-link="'/home'" @click="clickTab('home')" class="tabbar-item" :class="{'active': isActive('home')}">
+            <p class=" tabbar-label">新建采集</p>
         </a>
-        <a v-link="'/mine'" @click="clickTab('mine')" class="tabbar-item" :class="{'active': isActive('mine')}">
-            <p class=" tabbar-label">我的信息</p>
+        <a v-link="'/histroy'" @click="clickTab('histroy')" class="tabbar-item" :class="{'active': isActive('histroy')}">
+            <p class=" tabbar-label">采集历史</p>
         </a>
     </div>
 </template>
@@ -57,7 +57,7 @@ export default {
             line-height: 100px;
         }
         &.active .tabbar-label {
-            color: $theme-blue;
+            color: $theme-red;
         }
     }
     .tabbar-item:last-child {
