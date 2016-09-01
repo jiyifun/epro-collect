@@ -4,6 +4,11 @@ import Home from '../views/Home'
 import Histroy from '../views/Histroy'
 import UserInfo from '../views/UserInfo'
 import NotFound from '../views/NotFound'
+import Tooth from '../views/Tooth'
+import First from '../views/tooth/First'
+import Second from '../views/tooth/Second'
+import Third from '../views/tooth/Third'
+import Fourth from '../views/tooth/Fourth'
 // 注册模块
 
 export function configRouter (router) {
@@ -20,6 +25,21 @@ export function configRouter (router) {
     },
     '/user_info': {
       component: UserInfo
+    },
+    '/tooth': {
+      component: Tooth
+    },
+    '/tooth/first': {
+      component: First
+    },
+    '/tooth/second': {
+      component: Second
+    },
+    '/tooth/third': {
+      component: Third
+    },
+    '/tooth/fourth': {
+      component: Fourth
     },
     '*': {
       component: NotFound,

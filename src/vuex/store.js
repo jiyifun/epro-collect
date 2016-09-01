@@ -6,6 +6,7 @@ import article from './modules/article'
 import tags from './modules/tags'
 import tagContentList from './modules/tagContentList'
 import commentsList from './modules/commentsList'
+import tooth from './modules/tooth'
 
 Vue.use(Vuex)
 Vue.config.debug = true
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     article,
     tags,
     tagContentList,
-    commentsList
+    commentsList,
+    tooth
   }
 })

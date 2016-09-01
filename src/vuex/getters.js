@@ -10,3 +10,6 @@ export const tagContentList = ({ tagContentList }) => tagContentList.tagContentL
 export const tagContentListId = ({ tagContentList }) => tagContentList.tagId
 
 export const commentsList = ({ commentsList }) => commentsList.commentsList
+
+export const cariesList = ({ tooth }) => tooth.cariesList
+export const brokenList = ({ tooth }) => tooth.brokenList

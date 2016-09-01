@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import FastClick from 'fastclick'
 // 引入路由配置
+import store from './vuex/store'
 import { configRouter } from './route'
 // 引入样式
 import './styles/css/global.scss'
@@ -21,4 +22,5 @@ const router = new VueRouter({
 configRouter(router)
 // 移动端点击延迟
 FastClick.attach(window.document.body)
+App.store = store
 router.start(App, '#app')

@@ -7,4 +7,368 @@
 @mixin reverse_z-index($n: 10, $max: 10) {
 	z-index: $max - $n;
 }
+// 保存按钮
+.save-and-back {
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -42px -111px;
+	padding: 15px 30px;
+	color: #fff;
+	border: 2px solid #fff;
+	font-size: 40px; /*px*/
+	border-radius: 10px;
+}
+// 牙齿图标
+@for $i from 1 through 1 {
+	@for $j from 1 through 8 {
+		.tooth-icon.tooth-#{$i}#{$j} {
+			background-image: url('../../assets/tooth/icon_t#{$i}#{$j}.png');
+		}
+		.tooth-icon.black-tooth.tooth-#{$i}#{$j} {
+			background-image: url('../../assets/tooth/icon_tb1#{$j}.png');
+		}
+	}
+}
 
+// 牙齿坐标，大小
+$tooth-first-icon-map: (
+	11: (
+		left: 538px,
+		top: 252px,
+		width: 111px,
+		height: 111px
+	),
+	12: (
+		left: 438px,
+		top: 290px,
+		width: 104px,
+		height: 102px
+	),
+	13: (
+		left: 353px,
+		top: 319px,
+		width: 113px,
+		height: 129px
+	),
+	14: (
+		left: 266px,
+		top: 427px,
+		width: 132px,
+		height: 136px
+	),
+	15: (
+		left: 212px,
+		top: 532px,
+		width: 145px,
+		height: 149px
+	),
+	16: (
+		left: 161px,
+		top: 662px,
+		width: 169px,
+		height: 167px
+	),
+	17: (
+		left: 130px,
+		top: 816px,
+		width: 177px,
+		height: 186px
+	),
+	18: (
+		left: 93px,
+		top: 978px,
+		width: 168px,
+		height: 178px
+	)
+);
+
+$tooth-second-icon-map: (
+	11: (
+		left: 96px,
+		top: 252px,
+		width: 111px,
+		height: 111px
+	),
+	12: (
+		left: 201px,
+		top: 290px,
+		width: 104px,
+		height: 102px
+	),
+	13: (
+		left: 278px,
+		top: 319px,
+		width: 113px,
+		height: 129px
+	),
+	14: (
+		left: 346px,
+		top: 427px,
+		width: 132px,
+		height: 136px
+	),
+	15: (
+		left: 385px,
+		top: 532px,
+		width: 145px,
+		height: 149px
+	),
+	16: (
+		left: 414px,
+		top: 662px,
+		width: 169px,
+		height: 167px
+	),
+	17: (
+		left: 438px,
+		top: 816px,
+		width: 177px,
+		height: 186px
+	),
+	18: (
+		left: 481px,
+		top: 978px,
+		width: 168px,
+		height: 178px
+	)
+);
+$tooth-third-icon-map: (
+	11: (
+		left: 542px,
+		top: 1046px,
+		width: 111px,
+		height: 111px
+	),
+	12: (
+		left: 440px,
+		top: 1017px,
+		width: 104px,
+		height: 102px
+	),
+	13: (
+		left: 354px,
+		top: 960px,
+		width: 113px,
+		height: 129px
+	),
+	14: (
+		left: 268px,
+		top: 847px,
+		width: 132px,
+		height: 136px
+	),
+	15: (
+		left: 214px,
+		top: 728px,
+		width: 145px,
+		height: 149px
+	),
+	16: (
+		left: 163px,
+		top: 576px,
+		width: 169px,
+		height: 167px
+	),
+	17: (
+		left: 130px,
+		top: 404px,
+		width: 177px,
+		height: 186px
+	),
+	18: (
+		left: 95px,
+		top: 254px,
+		width: 168px,
+		height: 178px
+	)
+);
+$tooth-fourth-icon-map: (
+	11: (
+		left: 95px,
+		top: 1045px,
+		width: 111px,
+		height: 111px
+	),
+	12: (
+		left: 202px,
+		top: 1017px,
+		width: 104px,
+		height: 102px
+	),
+	13: (
+		left: 276px,
+		top: 962px,
+		width: 113px,
+		height: 129px
+	),
+	14: (
+		left: 346px,
+		top: 848px,
+		width: 132px,
+		height: 136px
+	),
+	15: (
+		left: 386px,
+		top: 726px,
+		width: 145px,
+		height: 149px
+	),
+	16: (
+		left: 414px,
+		top: 576px,
+		width: 169px,
+		height: 167px
+	),
+	17: (
+		left: 438px,
+		top: 404px,
+		width: 177px,
+		height: 186px
+	),
+	18: (
+		left: 482px,
+		top: 254px,
+		width: 168px,
+		height: 178px
+	)
+);
+
+// 下标数字坐标
+$tooth-first-number-map: (
+	11: (
+		left: 614px,
+		top: 385px
+	),
+	12: (
+		left: 539px,
+		top: 415px
+	),
+	13: (
+		left: 476px,
+		top: 461px
+	),
+	14: (
+		left: 410px,
+		top: 547px
+	),
+	15: (
+		left: 368px,
+		top: 650px
+	),
+	16: (
+		left: 339px,
+		top: 774px
+	),
+	17: (
+		left: 314px,
+		top: 944px
+	),
+	18: (
+		left: 292px,
+		top: 1110px
+	)
+);
+
+$tooth-second-number-map: (
+	11: (
+		left: 138px,
+		top: 385px
+	),
+	12: (
+		left: 206px,
+		top: 415px
+	),
+	13: (
+		left: 268px,
+		top: 461px
+	),
+	14: (
+		left: 317px,
+		top: 547px
+	),
+	15: (
+		left: 349px,
+		top: 650px
+	),
+	16: (
+		left: 379px,
+		top: 774px
+	),
+	17: (
+		left: 402px,
+		top: 944px
+	),
+	18: (
+		left: 431px,
+		top: 1110px
+	)
+);
+$tooth-third-number-map: (
+	11: (
+		left: 604px,
+		top: 990px
+	),
+	12: (
+		left: 523px,
+		top: 960px
+	),
+	13: (
+		left: 457px,
+		top: 910px
+	),
+	14: (
+		left: 402px,
+		top: 851px
+	),
+	15: (
+		left: 367px,
+		top: 746px
+	),
+	16: (
+		left: 345px,
+		top: 625px
+	),
+	17: (
+		left: 321px,
+		top: 468px
+	),
+	18: (
+		left: 280px,
+		top: 316px
+	)
+);
+$tooth-fourth-number-map: (
+	11: (
+		left: 130px,
+		top: 990px
+	),
+	12: (
+		left: 206px,
+		top: 960px
+	),
+	13: (
+		left: 260px,
+		top: 911px
+	),
+	14: (
+		left: 300px,
+		top: 851px
+	),
+	15: (
+		left: 340px,
+		top: 746px
+	),
+	16: (
+		left: 360px,
+		top: 625px
+	),
+	17: (
+		left: 380px,
+		top: 468px
+	),
+	18: (
+		left: 420px,
+		top: 310px
+	)
+);

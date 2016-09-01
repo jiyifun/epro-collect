@@ -68,3 +68,19 @@ export const submitComment = function ({ dispatch }, data) {
     })
   })
 }
+// 获取牙齿情况列表
+export const getToothList = ({dispatch}, userId) => {
+  this.$http.get(API_ROOT + 'api/tooth/' + userId).then(response => {
+    dispatch(types.GET_TOOTH_LIST, JSON.parse(response.body))
+  }, error => {
+    dispatch(types.GET_TOOTH_LIST_FAILURE, error)
+  })
+}
+// 提交牙齿情况
+export const submitTooth = ({dispatch}, data) => {
+  this.$http.post(API_ROOT + 'api/tooth', data).then(response => {
+    dispatch(types.SUBMIT_TOOTH, JSON.parse(response.body), error => {
+      dispatch(types.SUBMIT_TOOTH_FAILURE, error)
+    })
+  })
+}

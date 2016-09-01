@@ -2,7 +2,7 @@
 <template>
   <div class="tooth">
     <div class="tooth-wrap">
-      <div class="tooth-first">
+      <div class="tooth-third">
       	<ul>
       		<li v-for="teeth in toothIndexs">
 
@@ -19,7 +19,7 @@
   </div>
 </template>
 <script type="text/babel">
-import {FIRST_TITLE, TOOTHLIST} from '../../constants'
+import {THIRD_TITLE, TOOTHLIST} from '../../constants'
 import {brokenList, cariesList} from '../../vuex/getters'
 import {updateHeadline} from '../../vuex/actions'
 export default {
@@ -47,7 +47,7 @@ export default {
     }
   },
   created () {
-    this.updateHeadline(FIRST_TITLE)
+    this.updateHeadline(THIRD_TITLE)
   }
 }
 </script>
@@ -72,7 +72,7 @@ export default {
 	height: 150px;
  	background-color: $tooth-bg;
 }
-.tooth-first {
+.tooth-third {
   position: relative;
   height: 100%;
   width: 100%;
@@ -82,8 +82,9 @@ export default {
   	height: 30px;
   	width: 30px;
   	background-repeat: no-repeat;
+	transform: rotateX(180deg);
 
-  	@each $key, $value in $tooth-first-icon-map {
+  	@each $key, $value in $tooth-third-icon-map {
   		&.tooth-#{$key} {
   			width: map-get($value, width);
   			height: map-get($value, height);
@@ -98,7 +99,7 @@ export default {
 	font-size: 36px;
 	color: #7a7272;
 
-	@each $key, $value in $tooth-first-number-map {
+	@each $key, $value in $tooth-third-number-map {
   		&.tooth-#{$key} {
   			top: map-get($value, top) - 150px; //设计图坐标包括微信头部，需要减去
   			left: map-get($value, left);
