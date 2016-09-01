@@ -14,29 +14,7 @@ export const SECOND_TITLE = '左上区'
 export const THIRD_TITLE = '右下区'
 export const FOURTH_TITLE = '左下区'
 
-export const TOOTH_INDEXS = [11, 12, 13, 14, 15, 16, 17, 18]
-export const TOOTHLIST = [{
-  index: 11,
-  isBlack: true
-}, {
-  index: 12,
-  isBlack: false
-}, {
-  index: 13,
-  isBlack: false
-}, {
-  index: 14,
-  isBlack: false
-}, {
-  index: 15,
-  isBlack: false
-}, {
-  index: 16,
-  isBlack: false
-}, {
-  index: 17,
-  isBlack: false
-}, {
-  index: 18,
-  isBlack: false
-}]
+export const TOOTH_FIRST_INDEXS = [11, 12, 13, 14, 15, 16, 17, 18]
+export const TOOTH_SECOND_INDEXS = [21, 22, 23, 24, 25, 26, 27, 28]
+export const TOOTH_THIRD_INDEXS = [31, 32, 33, 34, 35, 36, 37, 38]
+export const TOOTH_FOURTH_INDEXS = [41, 42, 43, 44, 45, 46, 47, 48]

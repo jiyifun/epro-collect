@@ -20,10 +20,10 @@
 	border-radius: 10px;
 }
 // 牙齿图标
-@for $i from 1 through 1 {
+@for $i from 1 through 4 {
 	@for $j from 1 through 8 {
 		.tooth-icon.tooth-#{$i}#{$j} {
-			background-image: url('../../assets/tooth/icon_t#{$i}#{$j}.png');
+			background-image: url('../../assets/tooth/icon_t1#{$j}.png');
 		}
 		.tooth-icon.black-tooth.tooth-#{$i}#{$j} {
 			background-image: url('../../assets/tooth/icon_tb1#{$j}.png');
@@ -33,50 +33,50 @@
 
 // 牙齿坐标，大小
 $tooth-first-icon-map: (
-	11: (
-		left: 538px,
-		top: 252px,
+	1: (
+		left: 525px,
+		top: 255px,
 		width: 111px,
 		height: 111px
 	),
-	12: (
-		left: 438px,
-		top: 290px,
+	2: (
+		left: 430px,
+		top: 300px,
 		width: 104px,
 		height: 102px
 	),
-	13: (
-		left: 353px,
-		top: 319px,
+	3: (
+		left: 345px,
+		top: 330px,
 		width: 113px,
 		height: 129px
 	),
-	14: (
-		left: 266px,
-		top: 427px,
+	4: (
+		left: 260px,
+		top: 435px,
 		width: 132px,
 		height: 136px
 	),
-	15: (
-		left: 212px,
-		top: 532px,
+	5: (
+		left: 200px,
+		top: 535px,
 		width: 145px,
 		height: 149px
 	),
-	16: (
-		left: 161px,
-		top: 662px,
+	6: (
+		left: 140px,
+		top: 665px,
 		width: 169px,
 		height: 167px
 	),
-	17: (
-		left: 130px,
+	7: (
+		left: 100px,
 		top: 816px,
 		width: 177px,
 		height: 186px
 	),
-	18: (
-		left: 93px,
+	8: (
+		left: 73px,
 		top: 978px,
 		width: 168px,
 		height: 178px
@@ -84,49 +84,49 @@ $tooth-first-icon-map: (
 );
 
 $tooth-second-icon-map: (
-	11: (
+	21: (
 		left: 96px,
 		top: 252px,
 		width: 111px,
 		height: 111px
 	),
-	12: (
+	22: (
 		left: 201px,
 		top: 290px,
 		width: 104px,
 		height: 102px
 	),
-	13: (
+	23: (
 		left: 278px,
 		top: 319px,
 		width: 113px,
 		height: 129px
 	),
-	14: (
+	24: (
 		left: 346px,
 		top: 427px,
 		width: 132px,
 		height: 136px
 	),
-	15: (
+	25: (
 		left: 385px,
 		top: 532px,
 		width: 145px,
 		height: 149px
 	),
-	16: (
+	26: (
 		left: 414px,
 		top: 662px,
 		width: 169px,
 		height: 167px
 	),
-	17: (
+	27: (
 		left: 438px,
 		top: 816px,
 		width: 177px,
 		height: 186px
 	),
-	18: (
+	28: (
 		left: 481px,
 		top: 978px,
 		width: 168px,
@@ -134,49 +134,49 @@ $tooth-second-icon-map: (
 	)
 );
 $tooth-third-icon-map: (
-	11: (
+	31: (
 		left: 542px,
 		top: 1046px,
 		width: 111px,
 		height: 111px
 	),
-	12: (
+	32: (
 		left: 440px,
 		top: 1017px,
 		width: 104px,
 		height: 102px
 	),
-	13: (
+	33: (
 		left: 354px,
 		top: 960px,
 		width: 113px,
 		height: 129px
 	),
-	14: (
+	34: (
 		left: 268px,
 		top: 847px,
 		width: 132px,
 		height: 136px
 	),
-	15: (
+	35: (
 		left: 214px,
 		top: 728px,
 		width: 145px,
 		height: 149px
 	),
-	16: (
+	36: (
 		left: 163px,
 		top: 576px,
 		width: 169px,
 		height: 167px
 	),
-	17: (
+	37: (
 		left: 130px,
 		top: 404px,
 		width: 177px,
 		height: 186px
 	),
-	18: (
+	38: (
 		left: 95px,
 		top: 254px,
 		width: 168px,
@@ -184,49 +184,49 @@ $tooth-third-icon-map: (
 	)
 );
 $tooth-fourth-icon-map: (
-	11: (
+	41: (
 		left: 95px,
 		top: 1045px,
 		width: 111px,
 		height: 111px
 	),
-	12: (
+	42: (
 		left: 202px,
 		top: 1017px,
 		width: 104px,
 		height: 102px
 	),
-	13: (
+	43: (
 		left: 276px,
 		top: 962px,
 		width: 113px,
 		height: 129px
 	),
-	14: (
+	44: (
 		left: 346px,
 		top: 848px,
 		width: 132px,
 		height: 136px
 	),
-	15: (
+	45: (
 		left: 386px,
 		top: 726px,
 		width: 145px,
 		height: 149px
 	),
-	16: (
+	46: (
 		left: 414px,
 		top: 576px,
 		width: 169px,
 		height: 167px
 	),
-	17: (
+	47: (
 		left: 438px,
 		top: 404px,
 		width: 177px,
 		height: 186px
 	),
-	18: (
+	48: (
 		left: 482px,
 		top: 254px,
 		width: 168px,
@@ -236,138 +236,138 @@ $tooth-fourth-icon-map: (
 
 // 下标数字坐标
 $tooth-first-number-map: (
-	11: (
+	1: (
 		left: 614px,
 		top: 385px
 	),
-	12: (
+	2: (
 		left: 539px,
 		top: 415px
 	),
-	13: (
+	3: (
 		left: 476px,
 		top: 461px
 	),
-	14: (
+	4: (
 		left: 410px,
 		top: 547px
 	),
-	15: (
+	5: (
 		left: 368px,
 		top: 650px
 	),
-	16: (
+	6: (
 		left: 339px,
 		top: 774px
 	),
-	17: (
+	7: (
 		left: 314px,
 		top: 944px
 	),
-	18: (
+	8: (
 		left: 292px,
 		top: 1110px
 	)
 );
 
 $tooth-second-number-map: (
-	11: (
+	21: (
 		left: 138px,
 		top: 385px
 	),
-	12: (
+	22: (
 		left: 206px,
 		top: 415px
 	),
-	13: (
+	23: (
 		left: 268px,
 		top: 461px
 	),
-	14: (
+	24: (
 		left: 317px,
 		top: 547px
 	),
-	15: (
+	25: (
 		left: 349px,
 		top: 650px
 	),
-	16: (
+	26: (
 		left: 379px,
 		top: 774px
 	),
-	17: (
+	27: (
 		left: 402px,
 		top: 944px
 	),
-	18: (
+	28: (
 		left: 431px,
 		top: 1110px
 	)
 );
 $tooth-third-number-map: (
-	11: (
+	31: (
 		left: 604px,
 		top: 990px
 	),
-	12: (
+	32: (
 		left: 523px,
 		top: 960px
 	),
-	13: (
+	33: (
 		left: 457px,
 		top: 910px
 	),
-	14: (
+	34: (
 		left: 402px,
 		top: 851px
 	),
-	15: (
+	35: (
 		left: 367px,
 		top: 746px
 	),
-	16: (
+	36: (
 		left: 345px,
 		top: 625px
 	),
-	17: (
+	37: (
 		left: 321px,
 		top: 468px
 	),
-	18: (
+	38: (
 		left: 280px,
 		top: 316px
 	)
 );
 $tooth-fourth-number-map: (
-	11: (
+	41: (
 		left: 130px,
 		top: 990px
 	),
-	12: (
+	42: (
 		left: 206px,
 		top: 960px
 	),
-	13: (
+	43: (
 		left: 260px,
 		top: 911px
 	),
-	14: (
+	44: (
 		left: 300px,
 		top: 851px
 	),
-	15: (
+	45: (
 		left: 340px,
 		top: 746px
 	),
-	16: (
+	46: (
 		left: 360px,
 		top: 625px
 	),
-	17: (
+	47: (
 		left: 380px,
 		top: 468px
 	),
-	18: (
+	48: (
 		left: 420px,
 		top: 310px
 	)

@@ -6,26 +6,26 @@
       	<ul>
       		<li v-for="teeth in toothIndexs">
 
-      			<button class="tooth-icon"  :class="['tooth-' + teeth.index, {'black-tooth': isBlack(teeth.index)}]"  ></button>
+      			<button class="tooth-icon"  :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
-      			<span class="tooth-number tooth-{{teeth.index}}">{{teeth.index}}</span>
+      			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
       		</li>
       	</ul>
       </div>
     </div>
     <div class="tooth-footer">
-    	<button class="save-and-back">保存并返回</button>
+    	<button class="save-and-back" @click="submit">保存并返回</button>
     </div>
   </div>
 </template>
 <script type="text/babel">
-import {THIRD_TITLE, TOOTHLIST} from '../../constants'
+import {THIRD_TITLE, TOOTH_THIRD_INDEXS} from '../../constants'
 import {brokenList, cariesList} from '../../vuex/getters'
-import {updateHeadline} from '../../vuex/actions'
+import {updateHeadline, submitTooth} from '../../vuex/actions'
 export default {
   data () {
     return {
-      toothIndexs: TOOTHLIST
+      toothIndexs: TOOTH_THIRD_INDEXS
     }
   },
   components: {
@@ -36,7 +36,8 @@ export default {
       cariesList
     },
     actions: {
-      updateHeadline
+      updateHeadline,
+      submitTooth
     }
   },
   methods: {
@@ -44,6 +45,10 @@ export default {
       var isBroken = this.brokenList.indexOf(i) !== -1
       var isCaries = this.cariesList.indexOf(i) !== -1
       return isBroken || isCaries
+    },
+    submit () {
+      this.submitTooth()
+      this.$router.go('/tooth')
     }
   },
   created () {
@@ -82,16 +87,17 @@ export default {
   	height: 30px;
   	width: 30px;
   	background-repeat: no-repeat;
-	transform: rotateX(180deg);
+	  transform: rotateX(180deg);
 
-  	@each $key, $value in $tooth-third-icon-map {
-  		&.tooth-#{$key} {
-  			width: map-get($value, width);
-  			height: map-get($value, height);
-  			top: map-get($value, top) - 150px; //设计图坐标包括微信头部，需要减去
-  			left: map-get($value, left);
-  		}
-  	}
+  	@each $key, $value in $tooth-first-icon-map {
+      &.tooth-3#{$key} {
+        transform: rotateX(180deg);
+        width: map-get($value, width);
+        height: map-get($value, height);
+        top: (1135px - map-get($value, height) - (map-get($value, top) - 150px)); //设计图坐标包括微信头部，需要减去
+        left: map-get($value, left);
+      }
+    }
   } //end of tooth-icon
 
   .tooth-number {
@@ -99,12 +105,12 @@ export default {
 	font-size: 36px;
 	color: #7a7272;
 
-	@each $key, $value in $tooth-third-number-map {
-  		&.tooth-#{$key} {
-  			top: map-get($value, top) - 150px; //设计图坐标包括微信头部，需要减去
-  			left: map-get($value, left);
-  		}
-  	}
+  	@each $key, $value in $tooth-first-number-map {
+      &.tooth-3#{$key} {
+        top: (1135px - 40px -(map-get($value, top) - 150px)); //设计图坐标包括微信头部，需要减去
+        left: map-get($value, left);
+      }
+    }
   } //end of tooth-number
 }
 </style>

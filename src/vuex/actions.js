@@ -1,5 +1,6 @@
 import * as types from './mutation-types'
 import { API_ROOT } from '../constants'
+import Vue from 'vue'
 
 export const getContentList = function ({ dispatch }) {
   dispatch(types.REQUEST_CONTENT_LIST)
@@ -78,7 +79,7 @@ export const getToothList = ({dispatch}, userId) => {
 }
 // 提交牙齿情况
 export const submitTooth = ({dispatch}, data) => {
-  this.$http.post(API_ROOT + 'api/tooth', data).then(response => {
+  Vue.http.post(API_ROOT + 'api/tooth', data).then(response => {
     dispatch(types.SUBMIT_TOOTH, JSON.parse(response.body), error => {
       dispatch(types.SUBMIT_TOOTH_FAILURE, error)
     })
