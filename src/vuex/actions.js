@@ -1,15 +1,7 @@
 import * as types from './mutation-types'
 import { API_ROOT } from '../constants'
 import Vue from 'vue'
-
-export const getContentList = function ({ dispatch }) {
-  dispatch(types.REQUEST_CONTENT_LIST)
-  this.$http.get(API_ROOT + 'api/content-list').then(response => {
-    dispatch(types.GET_CONTENT_LIST, JSON.parse(response.body))
-  }, error => {
-    dispatch(types.GET_CONTENT_LIST_FAILURE, error)
-  })
-}
+// import VueRouter from 'vue-router'
 
 // 上传图片 todo
 export const updateActiveTab = ({dispatch}, value) => {
@@ -25,50 +17,6 @@ export const updateHeadline = ({ dispatch }, value) => {
   dispatch(types.UPDATE_HEADLINE, value)
 }
 
-//  获取文章内容, 清除文章
-export const getArticle = function ({ dispatch }, id) {
-  this.$http.get(API_ROOT + 'api/article/' + id).then(response => {
-    dispatch(types.GET_ARTICLE, JSON.parse(response.body))
-  }, error => {
-    dispatch(types.GET_ARTICLE_FAILURE, error)
-  })
-}
-export const clearArticle = function ({ dispatch }) {
-  dispatch(types.CLEAR_ARTICLE)
-}
-
-// 获取标签集, 获取指定标签列表
-export const getTags = function ({ dispatch }) {
-  this.$http.get(API_ROOT + 'api/tags').then(response => {
-    dispatch(types.GET_TAGS, JSON.parse(response.body))
-  }, error => {
-    dispatch(types.GET_TAGS_FAILURE, error)
-  })
-}
-export const getTagContentList = function ({ dispatch }, tagId) {
-  this.$http.get(API_ROOT + 'api/tags/' + tagId).then(response => {
-    dispatch(types.GET_TAG_CONTENT_LIST, JSON.parse(response.body), tagId)
-  }, error => {
-    dispatch(types.GET_TAG_CONTENT_LIST_FAILURE, error)
-  })
-}
-
-// 根据 文章 id 获取 comments
-export const getCommentsList = function ({ dispatch }, articleId) {
-  this.$http.get(API_ROOT + 'api/comments/' + articleId).then(response => {
-    dispatch(types.GET_COMMENTS_LIST, JSON.parse(response.body), error => {
-      dispatch(types.GET_COMMENTS_LIST_FAILURE, error)
-    })
-  })
-}
-// 提交评论
-export const submitComment = function ({ dispatch }, data) {
-  this.$http.post(API_ROOT + 'api/comments/submitComment', data).then(response => {
-    dispatch(types.SUBMIT_COMMENT, JSON.parse(response.body), error => {
-      dispatch(types.SUBMIT_COMMENT_FAILURE, error)
-    })
-  })
-}
 // 获取牙齿情况列表
 export const getToothList = ({dispatch}, userId) => {
   this.$http.get(API_ROOT + 'api/tooth/' + userId).then(response => {
@@ -84,4 +32,38 @@ export const submitTooth = ({dispatch}, data) => {
       dispatch(types.SUBMIT_TOOTH_FAILURE, error)
     })
   })
+}
+// 设置当前选中牙齿
+export const setCurrentTeeth = ({dispatch}, value) => {
+  dispatch(types.SET_CURRENTTEETH, value)
+}
+// 添加龋齿
+export const addCariesList = ({dispatch}, value) => {
+  dispatch(types.ADD_CARIES_LIST, value)
+}
+// 移除龋齿
+export const removeCariesList = ({dispatch}, value) => {
+  dispatch(types.REMOVE_CARIES_LIST, value)
+}
+// 添加残缺
+export const addBrokenList = ({dispatch}, value) => {
+  dispatch(types.ADD_BROKEN_LIST, value)
+}
+// 移除残缺
+export const removeBrokenList = ({dispatch}, value) => {
+  dispatch(types.REMOVE_BROKEN_LIST, value)
+}
+// 提交问卷
+export const submitQuestionnaire = ({dispatch}, value) => {
+  dispatch(types.SUBMIT_QUESTIONNAIRE, value)
+}
+
+// 提交图片
+export const submitToothPic = ({dispatch}, value) => {
+  dispatch(types.SUBMIT_TOOTH_PIC, value)
+}
+
+// 创建用户
+export const createUser = ({dispatch}, value) => {
+  dispatch(types.CREATE_USER, value)
 }

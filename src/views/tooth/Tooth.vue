@@ -49,7 +49,7 @@
   </div>
 </template>
 <script type="text/babel">
-import {FIRST_TITLE, TOOTH_FIRST_INDEXS, TOOTH_SECOND_INDEXS, TOOTH_THIRD_INDEXS, TOOTH_FOURTH_INDEXS} from '../../constants'
+import {TOOTH_TITLE, TOOTH_FIRST_INDEXS, TOOTH_SECOND_INDEXS, TOOTH_THIRD_INDEXS, TOOTH_FOURTH_INDEXS} from '../../constants'
 import {brokenList, cariesList} from '../../vuex/getters'
 import {updateHeadline, submitTooth} from '../../vuex/actions'
 export default {
@@ -85,7 +85,7 @@ export default {
     }
   },
   created () {
-    this.updateHeadline(FIRST_TITLE)
+    this.updateHeadline(TOOTH_TITLE)
   }
 }
 </script>
@@ -112,14 +112,14 @@ export default {
  	background-color: $tooth-bg;
 }
 .tooth-zone:nth-child(1) {
-  border-bottom: 1px dashed #fff;
-  border-right: 1px dashed #fff;
+  border-bottom: 2px dashed #646464;
+  border-right: 2px dashed #646446;
 }
 .tooth-zone:nth-child(2) {
-  border-bottom: 1px dashed #fff; /*px*/
+  border-bottom: 2px dashed #646464; /*px*/
 }
 .tooth-zone:nth-child(3) {
-  border-right: 1px dashed #fff; /*px*/
+  border-right: 2px dashed #646464; /*px*/
 }
 .tooth-zone {
   position: relative;
@@ -154,7 +154,7 @@ export default {
         transform: rotateX(180deg);
         width: map-get($value, width) / 2;
         height: map-get($value, height) / 2;
-        top: (1135px - map-get($value, height) - (map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
+        top: (1035px - map-get($value, height) - (map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
         left: map-get($value, left) / 2;
       }
     }
@@ -163,7 +163,7 @@ export default {
         transform: rotateY(180deg) rotateX(180deg);
         width: map-get($value, width) / 2;
         height: map-get($value, height) / 2;
-        top: (1135px - map-get($value, height) - (map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
+        top: (1035px - map-get($value, height) - (map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
         left: (700px - map-get($value, width) - map-get($value, left)) / 2;
       }
     }
@@ -190,13 +190,13 @@ export default {
     }
     @each $key, $value in $tooth-first-number-map {
       &.tooth-3#{$key} {
-        top: (1135px - 40px -(map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
+        top: (1035px - 40px -(map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
         left: map-get($value, left) / 2;
       }
     }
     @each $key, $value in $tooth-first-number-map {
       &.tooth-4#{$key} {
-        top: (1135px - 40px -(map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
+        top: (1035px - 40px -(map-get($value, top) - 150px)) / 2; //设计图坐标包括微信头部，需要减去
         left: (690px - 30px - map-get($value, left)) / 2;
       }
     }

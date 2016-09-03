@@ -3,6 +3,8 @@
 import Home from '../views/Home'
 import Histroy from '../views/Histroy'
 import UserInfo from '../views/UserInfo'
+import Questionnaire from '../views/Questionnaire'
+import ToothPic from '../views/ToothPic'
 import NotFound from '../views/NotFound'
 import Tooth from '../views/tooth/Tooth'
 import First from '../views/tooth/First'
@@ -25,6 +27,12 @@ export function configRouter (router) {
     },
     '/user_info': {
       component: UserInfo
+    },
+    '/questionnaire': {
+      component: Questionnaire
+    },
+    '/tooth_pic': {
+      component: ToothPic
     },
     '/tooth': {
       component: Tooth

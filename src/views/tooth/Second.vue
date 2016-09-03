@@ -6,13 +6,14 @@
       	<ul>
       		<li v-for="teeth in toothIndexs">
 
-      			<button class="tooth-icon"  :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
+      			<button class="tooth-icon" @click="clickTeeth(teeth)" :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
       			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
       		</li>
       	</ul>
       </div>
     </div>
+    <tooth-selector v-if="isShow"></tooth-selector>
     <div class="tooth-footer">
     	<button class="save-and-back" @click="submit">保存并返回</button>
     </div>
@@ -21,14 +22,17 @@
 <script type="text/babel">
 import {SECOND_TITLE, TOOTH_SECOND_INDEXS} from '../../constants'
 import {brokenList, cariesList} from '../../vuex/getters'
-import {updateHeadline, submitTooth} from '../../vuex/actions'
+import {updateHeadline, setCurrentTeeth} from '../../vuex/actions'
+import ToothSelector from '../../components/ToothSelector'
 export default {
   data () {
     return {
-      toothIndexs: TOOTH_SECOND_INDEXS
+      toothIndexs: TOOTH_SECOND_INDEXS,
+      isShow: false
     }
   },
   components: {
+    ToothSelector
   },
   vuex: {
     getters: {
@@ -37,7 +41,7 @@ export default {
     },
     actions: {
       updateHeadline,
-      submitTooth
+      setCurrentTeeth
     }
   },
   methods: {
@@ -47,8 +51,11 @@ export default {
       return isBroken || isCaries
     },
     submit () {
-      this.submitTooth()
       this.$router.go('/tooth')
+    },
+    clickTeeth (t) {
+      this.setCurrentTeeth(t)
+      this.isShow = true
     }
   },
   created () {
@@ -87,6 +94,7 @@ export default {
   	height: 30px;
   	width: 30px;
   	background-repeat: no-repeat;
+    background-size: cover;
 	  transform: rotateY(180deg);
   	@each $key, $value in $tooth-first-icon-map {
       &.tooth-2#{$key} {

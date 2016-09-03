@@ -8,7 +8,7 @@
        </div>
        <div class="form-item">
         <i class="form-item__icon icon-phone"></i>
-        <input class="form-item__text-input" placeholder="请输入手机" name="user_name" id="user_name" type="number" />
+        <input class="form-item__text-input" placeholder="请输入手机" name="user_phone" id="user_phone" type="number" />
        </div>
      </div>
      <input class="form-submit" type="submit" value="下一步">
@@ -17,48 +17,37 @@
 </template>
 
 <script type="text/babel">
-// /*global FormData:true*/
+/*global FormData:true*/
 /*eslint no-undef: "error"*/
   import { USERINFO_TITLE } from '../constants'
-  import { updateHeadline } from '../vuex/actions'
+  import { updateHeadline, createUser } from '../vuex/actions'
   export default {
     vuex: {
       actions: {
-        updateHeadline: updateHeadline
+        updateHeadline,
+        createUser
       }
     },
     created () {
       this.updateHeadline(USERINFO_TITLE)
     },
     methods: {
-      submit: function (event) {
+      submit (event) {
         // FormData支持把 Form 元素丟進去
-        // var formData = new FormData(event.target)
-
-        // this.$http.post('http://test.e-pro.com.cn/cgi/wx/file_upload', formData, function (data, status, request) {
-        //      // Success
-        // }).error(function (data, status, request) {
-        //      // Error
-        // })
-         // POST /someUrl
-        // this.$http.post('/e-api/cgi/wx/file_upload', formData).then((response) => {
-        //   // get status
-        //   console.log(response.status)
-
-        //   // get status text
-        //   console.log(response.data)
-
-        //   // get all headers
-        //   console.log(response.headers)
-
-        //   // get 'Expires' header
-        //   // response.headers['Expires']
-
-        //   // set data on vm
-        //   // this.$set('someData', response.json())
-        // }, (response) => {
-        //     // error callback
-        // })
+        var that = this
+        var formData = new FormData(event.target)
+        this.$http.post('e-api/cgi/wy/add_user', formData).then((response) => {
+          // Success
+          var data = JSON.parse(response.body)
+          if (data.errcode === 0 && data.result.user_id) {
+            that.createUser(data.result.user_id)
+            that.$route.router.go('/questionnaire')
+          } else {
+            console.error(data)
+          }
+        }, (response) => {
+             // Error
+        })
       }
     }
   }

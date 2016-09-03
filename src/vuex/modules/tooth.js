@@ -1,25 +1,38 @@
-import { GET_TOOTH_LIST, GET_TOOTH_LIST_FAILURE, SUBMIT_TOOTH, SUBMIT_TOOTH_FAILURE } from '../mutation-types'
+import {SET_CURRENTTEETH, REMOVE_CARIES_LIST, ADD_CARIES_LIST, ADD_BROKEN_LIST, REMOVE_BROKEN_LIST} from '../mutation-types'
 
 const state = {
+  currentTeeth: 0, // 选中的牙齿
   cariesList: [11], // 龋齿
   brokenList: [13]  // 残缺
 }
 
 const mutations = {
-
-  [GET_TOOTH_LIST] (state, data) {
-    state.cariesList = data.cariesList
-    state.brokenList = data.brokenList
+  [ADD_BROKEN_LIST] (state, data) {
+    state.brokenList.push(data)
   },
-  [GET_TOOTH_LIST_FAILURE] (state) {
-    return state
+  [REMOVE_BROKEN_LIST] (state, data) {
+    console.info('即将移除' + data + '号残缺')
+    var i = state.brokenList.indexOf(data)
+    if (i >= 0) {
+      state.brokenList.splice(i, 1)
+    } else {
+      console.error('查无此残缺，无法移除')
+    }
   },
-  [SUBMIT_TOOTH] (state, data) {
-    state.cariesList = data.cariesList
-    state.brokenList = data.brokenList
+  [ADD_CARIES_LIST] (state, data) {
+    state.cariesList.push(data)
   },
-  [SUBMIT_TOOTH_FAILURE] (state) {
-    return state
+  [REMOVE_CARIES_LIST] (state, data) {
+    console.info('即将移除' + data + '号龋齿')
+    var i = state.cariesList.indexOf(data)
+    if (i >= 0) {
+      state.cariesList.splice(i, 1)
+    } else {
+      console.error('查无此龋齿，无法移除')
+    }
+  },
+  [SET_CURRENTTEETH] (state, data) {
+    state.currentTeeth = data
   }
 }
 
