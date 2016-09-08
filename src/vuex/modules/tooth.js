@@ -1,9 +1,9 @@
-import {SET_CURRENTTEETH, REMOVE_CARIES_LIST, ADD_CARIES_LIST, ADD_BROKEN_LIST, REMOVE_BROKEN_LIST} from '../mutation-types'
+import {CLEAN_TOOTH, SET_CURRENTTEETH, REMOVE_CARIES_LIST, ADD_CARIES_LIST, ADD_BROKEN_LIST, REMOVE_BROKEN_LIST} from '../mutation-types'
 
 const state = {
   currentTeeth: 0, // 选中的牙齿
-  cariesList: [11], // 龋齿
-  brokenList: [13]  // 残缺
+  cariesList: [], // 龋齿
+  brokenList: []  // 残缺
 }
 
 const mutations = {
@@ -33,6 +33,10 @@ const mutations = {
   },
   [SET_CURRENTTEETH] (state, data) {
     state.currentTeeth = data
+  },
+  [CLEAN_TOOTH] (state) {
+    state.cariesList = []
+    state.brokenList = []
   }
 }
 

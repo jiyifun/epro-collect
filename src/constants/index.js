@@ -1,7 +1,7 @@
 // // 存放常量
 export const API_ROOT = (process.env.NODE_ENV === 'production')
-  ? 'http://jiangjiu.leanapp.cn/'
-  : 'http://localhost:8080/'
+  ? 'http://smile.e-pro.com.cn'
+  : 'http://localhost:8080/e-api'
 
 export const HOME_TITLE = '开始采集'
 export const HISTROY_TITLE = '采集历史'
@@ -19,4 +19,8 @@ export const TOOTH_SECOND_INDEXS = [21, 22, 23, 24, 25, 26, 27, 28]
 export const TOOTH_THIRD_INDEXS = [31, 32, 33, 34, 35, 36, 37, 38]
 export const TOOTH_FOURTH_INDEXS = [41, 42, 43, 44, 45, 46, 47, 48]
 
-export const API_UPLOAD_PIC = 'e-api/cgi/wy/pic'
+export const DEFAULT_PIC = '/uploads/images/20160905120213.png'
+export const API_ROOT_PRO = 'http://smile.e-pro.com.cn'
+export const API_UPLOAD_PIC = '/cgi/file_upload'
+export const API_UPLOAD_REPORT = '/cgi/wy/add_cr'
+export const API_CREATE_USER = '/cgi/wy/add_user'

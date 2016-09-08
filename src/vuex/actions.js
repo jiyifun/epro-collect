@@ -25,9 +25,9 @@ export const getToothList = ({dispatch}, userId) => {
     dispatch(types.GET_TOOTH_LIST_FAILURE, error)
   })
 }
-// 提交牙齿情况
-export const submitTooth = ({dispatch}, data) => {
-  Vue.http.post(API_ROOT + 'api/tooth', data).then(response => {
+// 提交牙齿报告
+export const submitReport = ({dispatch}, data) => {
+  Vue.http.post('e-api/cgi/wy/add_cr', data).then(response => {
     dispatch(types.SUBMIT_TOOTH, JSON.parse(response.body), error => {
       dispatch(types.SUBMIT_TOOTH_FAILURE, error)
     })
@@ -62,8 +62,18 @@ export const submitQuestionnaire = ({dispatch}, value) => {
 export const submitToothPic = ({dispatch}, value) => {
   dispatch(types.SUBMIT_TOOTH_PIC, value)
 }
-
+// 删除图片
+export const deleteToothPic = ({dispatch}, value) => {
+  dispatch(types.DELETE_TOOTH_PIC, value)
+}
 // 创建用户
 export const createUser = ({dispatch}, value) => {
   dispatch(types.CREATE_USER, value)
+}
+// 清空
+export const cleanAll = ({dispatch}, value) => {
+  dispatch(types.CLEAN_USER)
+  dispatch(types.CLEAN_TOOTH)
+  dispatch(types.CLEAN_TOOTH_PIC)
+  dispatch(types.CLEAN_QUESTIONNAIRE)
 }

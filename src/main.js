@@ -4,6 +4,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import FastClick from 'fastclick'
+import './util/ajaxfileupload'
 // 引入路由配置
 import store from './vuex/store'
 import { configRouter } from './route'
@@ -14,10 +15,12 @@ import './styles/css/global.scss'
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.http.options.emulateJSON = true
+Vue.http.options.emulateHTTP = true
 // 配置路由
 const router = new VueRouter({
   history: true,
-  hashbang: false
+  hashbang: false,
+  root: '/wy'
 })
 configRouter(router)
 // 移动端点击延迟

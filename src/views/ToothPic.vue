@@ -1,50 +1,154 @@
 <template>
 	<div class="tooth-pic">
 		<div class="pic-zone">
-			<div class="pic_uploader">
-			    <input class="pic_uploader__input" type="file" name="file_data" id="upload-file" @change="uploadPic">
-			    <button v-show="true" class="pic_uploader__cancel"></button>
-			    <img v-show="true" src="" alt="" class="pic_uploader__img">
+			<div class="pic_uploader" :class="{'hide_cross': upper}">
+        <form id="upper-form" enctype="multipart/form-data">
+			    <input class="pic_uploader__input" type="file" name="file_data" id="upper" accept="image/*" enctype="multipart/form-data" v-on:change="uploadPic">
+			    <div v-show="hasUpper" class="pic_uploader__cancel" @click="removePic('upper')"></div>
+			    <div v-if="hasUpper" :style="'background-image: url(' + upperUrl + ')'" alt="" class="pic_uploader__img"></div> 
+        </form>
 			</div>
 			<p class="pic-title">请选择上牙齿照片</p>
 		</div>
 		<div class="pic-zone">
-			<button class="cancel"></button>
-			<img src="" alt="" class="pic">
+			<div class="pic_uploader" :class="{'hide_cross': lower}">
+        <form id="lower-form" enctype="multipart/form-data">
+          <input class="pic_uploader__input" type="file" name="file_data" id="lower" accept="image/*" enctype="multipart/form-data" @change="uploadPic">
+          <div v-show="hasLower" class="pic_uploader__cancel" @click="removePic('lower')"></div>
+          <div v-if="hasLower" :style="'background-image: url(' + lowerUrl + ')'" alt="" class="pic_uploader__img"></div> 
+        </form>
+      </div>
 			<p class="pic-title">请选择下牙齿照片</p>
 		</div>
 		<div class="next">
-			<button v-link="'/tooth'">下一步</button>
+			<button @click="next">下一步</button>
 		</div>
 	</div>
+
+
+<!--   <form id="myForm" @submit="uploadPic">
+      <div class="weui_uploader_input_wrp">
+        <input class="weui_uploader_input" name="file_data" id="file_data" type="file" accept="image/*" multiple @change="onFileChange" />
+      </div>
+      <input class="weui_btn weui_btn_primary" type="submit" value="送出">
+    </form> -->
 </template>
 <script>
-/*global FormData:true*/
-import {submitToothPic} from '../vuex/actions'
-import {API_ROOT, API_UPLOAD_PIC} from '../constants'
+/*global alert:true $:true FormData:true Image:true FileReader:true*/
+/*eslint no-unused-vars: ["warn", { "vars": "local" }]*/
+import {submitToothPic, deleteToothPic} from '../vuex/actions'
+import {lower, upper} from '../vuex/getters'
+import {API_UPLOAD_PIC, API_ROOT, API_ROOT_PRO, DEFAULT_PIC} from '../constants'
 export default {
   data () {
     return {
-      lower: null,
-      upper: null
+      // lower: null,
+      // upper: null
     }
   },
   vuex: {
+    getters: {
+      lower,
+      upper
+    },
     actions: {
-      submitToothPic
+      submitToothPic,
+      deleteToothPic
+    }
+  },
+  computed: {
+    upperUrl () {
+      console.log(API_ROOT_PRO)
+      return API_ROOT_PRO + (this.upper ? this.upper : DEFAULT_PIC)
+    },
+    lowerUrl () {
+      return API_ROOT_PRO + (this.lower ? this.lower : DEFAULT_PIC)
+    },
+    hasUpper () {
+      return this.upper !== null && this.upper !== DEFAULT_PIC
+    },
+    hasLower () {
+      return this.lower !== null && this.lower !== DEFAULT_PIC
     }
   },
   methods: {
+    next () {
+      if (this.hasLower && this.hasUpper) {
+        this.$route.router.go('/tooth')
+      } else {
+        alert('请上传2张图片')
+      }
+    },
+    removePic (target) {
+      this.deleteToothPic(target)
+    },
     uploadPic (event) {
-      var formdata = new FormData(event.target)
+      var vm = this
+      var id = event.target.id
+      var formdata = new FormData($('#' + id + '-form')[0])
       this.$http.post(API_ROOT + API_UPLOAD_PIC, formdata).then((response) => {
         // success
+        var json = JSON.parse(response.body)
+        if (json.errcode === 0) {
+          if (id === 'upper') {
+            vm.submitToothPic({
+              upper: json.result.img_url[0]
+            })
+          } else {
+            vm.submitToothPic({
+              lower: json.result.img_url[0]
+            })
+          }
+        } else {
+          alert(json.errmsg || '上传失败')
+        }
       }, (response) => {
         // failure
+        // var data = JSON.parse(response.body)
+        console.error(response)
+        alert('未知错误')
       })
+      /*eslint-disable */
+      // var id = event.target.id
+      // var vm = this
+      // console.log(id)
+      // var file = $('#'+id).val();
+      // console.log(file);
+        // if(!/.(jpg|jpeg|png|bmp|png|webp)$/.test(file)){
+        //     return false;
+        // }
+        // $.ajax({
+        //     url: API_UPLOAD_PIC,
+        //     data: formdata,
+        //     type: "post",
+        //     processData: false,  // 关键点
+        //     contentType: false,  // 关键点
+        //     success: function(data) {
+        //         var json = data;
+        //         if(json.errcode == 0) {
+        //           console.info('success')
+        //           if (id == 'upper') {
+        //             vm.upper = json.result.img_url[0]
+        //           } else {
+        //             vm.lower = json.result.img_url[0]
+        //           }
+        //         }else{
+        //             alert(json.errmsg||"上传失败");
+        //         }
+        //     },
+        //     error: function() {
+        //     }
+        // });
+/*eslint-enable */
+    },
+    ready () {
+      // console.log('ready!')
+      // var vm = this
+      // $('.pic_uploader__input').on('change', '#upper', function () {
+      //   vm.upLoadPic()
+      // })
     }
   }
-
 }
 </script>
 <style lang="scss">
@@ -84,6 +188,9 @@ export default {
           transform: translate(-50%,-50%);
           background-color: #d9d9d9;
       }
+      &.hide_cross:after, &.hide_cross:before {
+        display: none;
+      }
       .pic_uploader__input {
         position: absolute;
         top: 0;
@@ -91,12 +198,16 @@ export default {
         height: 100%;
         width: 100%;
         opacity: 0;
+        z-index: 10;
       }
       .pic_uploader__img {
         position: absolute;
         display: block;
         top: 0;
         left: 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
         height: 100%;
         width: 100%;
       }
@@ -109,7 +220,8 @@ export default {
         height: 50px;
         background-color: rgba(0, 0, 0, 0.4);
         border-radius: 50%;
-
+        z-index: 10;
+        
         &:after {
             width: 50%;
             height: 4px;
@@ -127,8 +239,13 @@ export default {
             background-color: #fff;
         }
       }
-    }
 
+    }
+    .pic-title {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 30px; /*px*/
+    }
   }
 
 }

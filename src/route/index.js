@@ -5,7 +5,8 @@ import Histroy from '../views/Histroy'
 import UserInfo from '../views/UserInfo'
 import Questionnaire from '../views/Questionnaire'
 import ToothPic from '../views/ToothPic'
-import NotFound from '../views/NotFound'
+// import App from '../App'
+// import NotFound from '../views/NotFound'
 import Tooth from '../views/tooth/Tooth'
 import First from '../views/tooth/First'
 import Second from '../views/tooth/Second'
@@ -48,12 +49,11 @@ export function configRouter (router) {
     },
     '/tooth/fourth': {
       component: Fourth
-    },
-    '*': {
-      component: NotFound,
-      title: '404'
     }
   })
+  // router.redirect({// 定义全局的重定向规则。全局的重定向会在匹配当前路径之前执行。
+  //   '*': '/home'// 重定向任意未匹配路径到/home
+  // })
   // global before
   // 3 options:
   // 1. return a boolean

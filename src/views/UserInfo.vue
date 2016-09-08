@@ -4,11 +4,11 @@
      <div class="form-wrap">
        <div class="form-item">
         <i class="form-item__icon icon-user"></i>
-        <input class="form-item__text-input" placeholder="请输入姓名" name="user_name" id="user_name" type="text" />
+        <input class="form-item__text-input" placeholder="请输入客户姓名" name="user_name" id="user_name" type="text" />
        </div>
        <div class="form-item">
         <i class="form-item__icon icon-phone"></i>
-        <input class="form-item__text-input" placeholder="请输入手机" name="user_phone" id="user_phone" type="number" />
+        <input class="form-item__text-input" placeholder="请输入客户手机" name="user_phone" id="user_phone" type="number" />
        </div>
      </div>
      <input class="form-submit" type="submit" value="下一步">
@@ -17,9 +17,9 @@
 </template>
 
 <script type="text/babel">
-/*global FormData:true*/
+/*global alert:true FormData:true*/
 /*eslint no-undef: "error"*/
-  import { USERINFO_TITLE } from '../constants'
+  import { USERINFO_TITLE, API_CREATE_USER, API_ROOT } from '../constants'
   import { updateHeadline, createUser } from '../vuex/actions'
   export default {
     vuex: {
@@ -36,17 +36,20 @@
         // FormData支持把 Form 元素丟進去
         var that = this
         var formData = new FormData(event.target)
-        this.$http.post('e-api/cgi/wy/add_user', formData).then((response) => {
+        console.log(event.target)
+        this.$http.post(API_ROOT + API_CREATE_USER, formData).then((response) => {
           // Success
           var data = JSON.parse(response.body)
           if (data.errcode === 0 && data.result.user_id) {
             that.createUser(data.result.user_id)
             that.$route.router.go('/questionnaire')
           } else {
-            console.error(data)
+            alert('该手机号已注册！')
           }
         }, (response) => {
              // Error
+          console.error(response)
+          alert('未知错误！')
         })
       }
     }

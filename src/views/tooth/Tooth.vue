@@ -44,14 +44,24 @@
       </div>
     </div>
     <div class="tooth-footer" >
-    	<button class="save-and-back">保存并返回</button>
+    	<button class="save-and-back" @click="submit">提交报告</button>
     </div>
   </div>
 </template>
 <script type="text/babel">
-import {TOOTH_TITLE, TOOTH_FIRST_INDEXS, TOOTH_SECOND_INDEXS, TOOTH_THIRD_INDEXS, TOOTH_FOURTH_INDEXS} from '../../constants'
-import {brokenList, cariesList} from '../../vuex/getters'
-import {updateHeadline, submitTooth} from '../../vuex/actions'
+/*global FormData:true alert:true*/
+import {TOOTH_TITLE, TOOTH_FIRST_INDEXS, TOOTH_SECOND_INDEXS, TOOTH_THIRD_INDEXS, TOOTH_FOURTH_INDEXS, API_UPLOAD_REPORT, API_ROOT} from '../../constants'
+import {userId,
+      brushCount,
+      isBled,
+      isLoosen,
+      isCleaned,
+      isUnwell,
+      lower,
+      upper,
+      cariesList,
+      brokenList} from '../../vuex/getters'
+import {updateHeadline, submitReport, cleanAll} from '../../vuex/actions'
 export default {
   data () {
     return {
@@ -65,12 +75,21 @@ export default {
   },
   vuex: {
     getters: {
-      brokenList,
-      cariesList
+      userId,
+      brushCount,
+      isBled,
+      isLoosen,
+      isCleaned,
+      isUnwell,
+      lower,
+      upper,
+      cariesList,
+      brokenList
     },
     actions: {
       updateHeadline,
-      submitTooth
+      submitReport,
+      cleanAll
     }
   },
   methods: {
@@ -80,8 +99,33 @@ export default {
       return isBroken || isCaries
     },
     submit () {
-      this.submitTooth()
-      this.$router.go('/tooth')
+      var vm = this
+      var formdata = new FormData()
+      formdata.append('user_id', this.userId)
+      formdata.append('brushCount', this.brushCount)
+      formdata.append('isBled', this.isBled)
+      formdata.append('isLoosen', this.isLoosen)
+      formdata.append('isCleaned', this.isCleaned)
+      formdata.append('isUnwell', this.isUnwell)
+      formdata.append('upper', this.upper)
+      formdata.append('lower', this.lower)
+      formdata.append('cariesList', this.cariesList)
+      formdata.append('brokenList', this.brokenList)
+      this.$http.post(API_ROOT + API_UPLOAD_REPORT, formdata).then((response) => {
+        // success
+        var json = JSON.parse(response.body)
+        if (json.errcode === 0) {
+          alert('提交成功！')
+          vm.cleanAll()
+          vm.$route.router.go('/home')
+        } else {
+          alert('提交失败！' + json.errmsg)
+        }
+      }, (response) => {
+        // error
+        console.error(response)
+        alert('未知错误')
+      })
     }
   },
   created () {

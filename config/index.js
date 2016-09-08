@@ -18,6 +18,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
+    assetsPublicPath: '/',
     port: 8080,
     proxyTable: {
       '/e-api': {
@@ -26,6 +27,14 @@ module.exports = {
         ws: true,
         pathRewrite:{
           '^/e-api': ''
+        }
+      },
+      '/test-api': {
+        target:'http://test.e-pro.com.cn/', 
+        changeOrigin: true,
+        ws: true,
+        pathRewrite:{
+          '^/test-api': ''
         }
       }
     }
