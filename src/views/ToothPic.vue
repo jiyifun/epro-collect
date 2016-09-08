@@ -116,7 +116,7 @@ export default {
       }, (response) => {
         // failure
         // var data = JSON.parse(response.body)
-        vm.show = false
+        vm.showLoading = false
         console.error(response)
         alert('未知错误')
       })
