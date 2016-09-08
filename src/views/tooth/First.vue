@@ -8,7 +8,7 @@
 
       			<button class="tooth-icon"  @click="clickTeeth(teeth)" :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
-      			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
+      			<span class="tooth-number" :class="'tooth-' + teeth">{{$index + 1}}</span>
       		</li>
       	</ul>
       </div>
@@ -20,9 +20,9 @@
   </div>
 </template>
 <script type="text/babel">
-import {FIRST_TITLE, TOOTH_FIRST_INDEXS} from '../../constants'
+import {FIRST_TITLE, TOOTH_FIRST_INDEXS, TOOTH_BLOCKS_LIST} from '../../constants'
 import {brokenList, cariesList} from '../../vuex/getters'
-import {updateHeadline, setCurrentTeeth} from '../../vuex/actions'
+import {updateHeadline, setCurrentTeeth, setCurrentBlock} from '../../vuex/actions'
 import ToothSelector from '../../components/ToothSelector'
 export default {
   data () {
@@ -41,7 +41,8 @@ export default {
     },
     actions: {
       updateHeadline,
-      setCurrentTeeth
+      setCurrentTeeth,
+      setCurrentBlock
     }
   },
   methods: {
@@ -59,6 +60,7 @@ export default {
     }
   },
   created () {
+    this.setCurrentBlock(TOOTH_BLOCKS_LIST[0])
     this.updateHeadline(FIRST_TITLE)
   }
 }

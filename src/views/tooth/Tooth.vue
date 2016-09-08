@@ -8,9 +8,10 @@
 
       			<button class="tooth-icon"  :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
-      			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
+      			<span class="tooth-number" :class="'tooth-' + teeth">{{$index + 1}}</span>
       		</li>
       	</ul>
+        <div class="tooth-zone__number first">I</div>
       </div>
       <div class="tooth-zone" v-link="'/tooth/second'">
       	<ul>
@@ -18,9 +19,10 @@
 
       			<button class="tooth-icon"  :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
-      			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
+      			<span class="tooth-number" :class="'tooth-' + teeth">{{$index + 1}}</span>
       		</li>
       	</ul>
+        <div class="tooth-zone__number second">II</div>
       </div>
       <div class="tooth-zone" v-link="'/tooth/third'">
       	<ul>
@@ -28,9 +30,10 @@
 
       			<button class="tooth-icon"  :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
-      			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
+      			<span class="tooth-number" :class="'tooth-' + teeth">{{$index + 1}}</span>
       		</li>
       	</ul>
+        <div class="tooth-zone__number third">III</div>
       </div>
       <div class="tooth-zone" v-link="'/tooth/fourth'">
       	<ul>
@@ -38,9 +41,10 @@
 
       			<button class="tooth-icon"  :class="['tooth-' + teeth, {'black-tooth': isBlack(teeth)}]"  ></button>
       			<!-- <button class="tooth-icon tooth-{{teeth.index}}"  v-else></button>	 -->
-      			<span class="tooth-number" :class="'tooth-' + teeth">{{teeth}}</span>
+      			<span class="tooth-number" :class="'tooth-' + teeth">{{$index + 1}}</span>
       		</li>
       	</ul>
+        <div class="tooth-zone__number fourth">IV</div>
       </div>
     </div>
     <div class="tooth-footer" >
@@ -170,6 +174,30 @@ export default {
   height: 50%;
   width: 354px;
   float: left;
+
+  .tooth-zone__number {
+    position: absolute;
+    color: #fff;
+    padding: 10px 20px; 
+    font-size: 34px;/*px*/
+    &.first {
+      right: 0;
+      bottom: 0;
+    }
+    &.second {
+      left: 0;
+      bottom: 0;
+    }
+    &.third {
+      top: 0;
+      right: 0;
+    }
+    &.fourth {
+      top: 0;
+      left: 0;
+    }
+
+  }
 
   .tooth-icon {
   	position: absolute;

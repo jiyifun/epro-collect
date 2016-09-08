@@ -37,6 +37,9 @@ export const submitReport = ({dispatch}, data) => {
 export const setCurrentTeeth = ({dispatch}, value) => {
   dispatch(types.SET_CURRENTTEETH, value)
 }
+export const setCurrentBlock = ({dispatch}, value) => {
+  dispatch(types.SET_CURRENTBLOCK, value)
+}
 // 添加龋齿
 export const addCariesList = ({dispatch}, value) => {
   dispatch(types.ADD_CARIES_LIST, value)

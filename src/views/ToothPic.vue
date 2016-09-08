@@ -23,6 +23,8 @@
 		<div class="next">
 			<button @click="next">下一步</button>
 		</div>
+    <loading :show="showLoading" :text="'正在上传'"></loading>
+    <toast :show.sync="showToast" :time="500">上传成功</toast>
 	</div>
 
 
@@ -39,12 +41,18 @@
 import {submitToothPic, deleteToothPic} from '../vuex/actions'
 import {lower, upper} from '../vuex/getters'
 import {API_UPLOAD_PIC, API_ROOT, API_ROOT_PRO, DEFAULT_PIC} from '../constants'
+import loading from 'vux-components/loading'
+import toast from 'vux-components/toast'
 export default {
   data () {
     return {
-      // lower: null,
-      // upper: null
+      showLoading: false,
+      showToast: false
     }
+  },
+  components: {
+    loading,
+    toast
   },
   vuex: {
     getters: {
@@ -86,8 +94,11 @@ export default {
       var vm = this
       var id = event.target.id
       var formdata = new FormData($('#' + id + '-form')[0])
+      vm.showLoading = true
       this.$http.post(API_ROOT + API_UPLOAD_PIC, formdata).then((response) => {
         // success
+        vm.showLoading = false
+        vm.showToast = true
         var json = JSON.parse(response.body)
         if (json.errcode === 0) {
           if (id === 'upper') {
@@ -105,6 +116,7 @@ export default {
       }, (response) => {
         // failure
         // var data = JSON.parse(response.body)
+        vm.show = false
         console.error(response)
         alert('未知错误')
       })

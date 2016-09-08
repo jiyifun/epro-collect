@@ -2,7 +2,7 @@
     <div class="tooth-selector" @click.self="close">
         <div class="selector-wrap">
             <div class="selector-header">
-                {{currentTeeth}}号牙
+                {{currentBlock}}区{{_currentTeeth}}号牙
             </div>
             <div class="fl">
                 <input type="checkbox" id="caries" v-model="caries">
@@ -16,11 +16,12 @@
     </div>
 </template>
 <script>
-import {currentTeeth, cariesList, brokenList} from '../vuex/getters'
+import {currentTeeth, currentBlock, cariesList, brokenList} from '../vuex/getters'
 import {addCariesList, removeCariesList, addBrokenList, removeBrokenList} from '../vuex/actions'
 export default {
   vuex: {
     getters: {
+      currentBlock,
       currentTeeth,
       cariesList,
       brokenList
@@ -47,6 +48,9 @@ export default {
 
   },
   computed: {
+    _currentTeeth () {
+      return String.prototype.split.call(this.currentTeeth.toString(), '')[1]
+    },
     caries: {
       get () {
         this.isCaries()

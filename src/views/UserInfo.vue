@@ -13,6 +13,7 @@
      </div>
      <input class="form-submit" type="submit" value="下一步">
    </form>
+   <loading :show="showLoading"></loading>
  </div>
 </template>
 
@@ -21,7 +22,16 @@
 /*eslint no-undef: "error"*/
   import { USERINFO_TITLE, API_CREATE_USER, API_ROOT } from '../constants'
   import { updateHeadline, createUser } from '../vuex/actions'
+  import loading from 'vux-components/loading'
   export default {
+    data () {
+      return {
+        showLoading: false
+      }
+    },
+    components: {
+      loading
+    },
     vuex: {
       actions: {
         updateHeadline,
@@ -37,9 +47,11 @@
         var that = this
         var formData = new FormData(event.target)
         console.log(event.target)
+        that.showLoading = true
         this.$http.post(API_ROOT + API_CREATE_USER, formData).then((response) => {
           // Success
           var data = JSON.parse(response.body)
+          that.showLoading = false
           if (data.errcode === 0 && data.result.user_id) {
             that.createUser(data.result.user_id)
             that.$route.router.go('/questionnaire')
@@ -48,6 +60,7 @@
           }
         }, (response) => {
              // Error
+          that.showLoading = false
           console.error(response)
           alert('未知错误！')
         })
